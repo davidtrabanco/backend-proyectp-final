@@ -23,7 +23,7 @@ export const cartsCtrl = [];
 //Crea un carrito y devuelve su id.
 cartsCtrl.postCart = async (req, res) =>{
     const newId = await cartsTable.add(new Carts());
-    res.send(`New cart was created with ID:${newId} `)
+    res.send(`New cart was created with ID:${newId}`)
 }
 
 //Vacía un carrito y lo elimina.
@@ -37,7 +37,9 @@ cartsCtrl.deleteCart = (req, res)=>{
 cartsCtrl.getProducts = async (req, res)=>{
     const cartId = req.params.id;
     const cartTemp = await cartsTable.get(cartId);
-    res.send(cartTemp.items);
+    if(cartTemp){
+        res.send(cartTemp.items)
+    };
 }
 
 //Para incorporar productos al carrito por su id de producto
@@ -46,7 +48,10 @@ cartsCtrl.postProduct = async (req, res)=>{
     const productId = req.params.id_prod;
 
     //Obtengo el producto:
-    const newItem = await productsTable.get(productId);
+        const newItem = req.body; //si lo mande por el body lo uso
+        if (productId) { //si lo mande por parametro lo busco y cargo
+            newItem= await productsTable.get(productId);
+        } 
 
     //Agrego el producto al carrito indicado:
         //Obtengo el carrito:

@@ -3,7 +3,7 @@ const validateAdmin = (req,res,next) =>{
     if(userAdmin){
         next()
     }else{
-        res.send("No tiene permisos para ejecutar la opración") 
+        res.send("No tiene permisos para ejecutar la operación") 
     };
 }
 
@@ -26,7 +26,7 @@ export const checkUserPrivileges = (req,res,next)=>{
             break;
         
         default:
-            res.send("No tiene permisos para ejecutar la opración");
+            res.send("No tiene permisos para ejecutar la operación");
             break;
     }
 }

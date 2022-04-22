@@ -13,8 +13,8 @@ cartRoute.delete('/:id', cartsCtrl.deleteCart)
 cartRoute.get('/:id/productos', cartsCtrl.getProducts)
 
 // POST: '/:id/productos' - Para incorporar productos al carrito por su id de producto
+cartRoute.post('/:id/productos/', cartsCtrl.postProduct)
 cartRoute.post('/:id/productos/:id_prod', cartsCtrl.postProduct)
 
 // DELETE: '/:id/productos/:id_prod' - Eliminar un producto del carrito por su id de carrito y de producto
 cartRoute.delete('/:id/productos/:id_prod', cartsCtrl.deleteProduct)
-
